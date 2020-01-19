@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var o = {v1:1,v2:2};
+    var p = {c1:3,c2:4};
+    function func(){
+      switch(this){
+        case o :
+        document.write('o<br />');
+        break;
+        case p :
+        document.write('p<br />');
+        break;
+        case window :
+        document.write('window<br />');
+        break;
+      }
+    }
+    func();
+    func.apply(o);
+    func.apply(p);
+  </script>
+</body>
+</html>

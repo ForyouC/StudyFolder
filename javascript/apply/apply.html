@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    o1 = {val1:1, val2:2, val3:3};
+    o2 = {v1:10, v2:50, v3:100, v4:25}
+    //o1 = {val1:1, val2:2, val3:3, su:sum};
+    //o2 = {v1:10, v2:50, v3:100, v4:25, su:sum};
+
+    function sum(){
+      var _sum = 0;
+      for(name in this){
+        //if(typeof this[name] !== 'function'){
+          _sum += this[name];
+        //}
+      }
+      return _sum;
+    }
+    console.log(sum.apply(o1));
+    console.log(sum.apply(o2));
+    //console.log(o1.su());
+    //console.log(o2.su());
+  </script>
+</body>
+</html>

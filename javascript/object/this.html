@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var o = {
+      func : function(){
+        if(o === this){
+          document.write("o === this<br>");
+        }
+      }
+    }
+    o.func();
+  </script>
+  <script type="text/javascript">
+    var functhis = null;
+
+    function func(){
+      functhis = this;
+    }
+
+    var o1 = func();
+    if(functhis === window){ //We hadn't used 'new' so 'functhis' inside this is point 'window'
+      document.write('window </br>');
+    }
+    var o2 = new func();
+    if(functhis === o2){ //We had used 'new' so 'functhis' inside this is point 'o2'
+      document.write('ow <br>');
+    }
+  </script>
+</body>
+</html>
