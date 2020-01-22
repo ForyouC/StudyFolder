@@ -24,10 +24,6 @@
       function hello() {
         var heloo = va;
       }
-      <?php
-        phpinfo();
-      ?>
-
     </script>
   </div>
 </body>
