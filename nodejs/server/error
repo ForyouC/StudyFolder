@@ -1,0 +1,52 @@
+2020-01-22 23:52:49:325 INFO  Windows OS is detected, 262144 limit of open files will be set for the disk cache. [ONative]
+2020-01-22 23:52:49:368 INFO  Loading configuration from: C:/Users/hjk14/orientdb-3.0.27/config/orientdb-server-config.xml... [OServerConfigurationLoaderXml]
+2020-01-22 23:52:49:598 INFO  OrientDB Server v3.0.27 - Veloce (build bc8f77600494cab71fb347d4c29f71c793442464, branch 3.0.x) is starting up... [OServer]
+2020-01-22 23:52:49:665 INFO  14968041472 B/14274 MB/13 GB of physical memory were detected on machine [ONative]
+2020-01-22 23:52:49:666 INFO  Detected memory limit for current process is 14968041472 B/14274 MB/13 GB [ONative]
+2020-01-22 23:52:49:667 INFO  JVM can use maximum 1963MB of heap memory [OMemoryAndLocalPaginatedEnginesInitializer]
+2020-01-22 23:52:49:667 INFO  Because OrientDB is running outside a container 12% of memory will be left unallocated according to the setting 'memory.leftToOS' not taking into account heap memory [OMemoryAndLocalPaginatedEnginesInitializer]
+2020-01-22 23:52:49:668 INFO  OrientDB auto-config DISKCACHE=10,598MB (heap=1,963MB os=14,274MB) [orientechnologies]
+2020-01-22 23:52:49:668 INFO  System is started under an effective user : `hjk14` [OEngineLocalPaginated]
+2020-01-22 23:52:49:669 INFO  Allocation of 161089 pages. [OEngineLocalPaginated]
+2020-01-22 23:52:50:984 INFO  WAL maximum segment size is set to 6,144 MB [OrientDBEmbedded]
+2020-01-22 23:52:50:985 INFO  Databases directory: C:\Users\hjk14\orientdb-3.0.27\databases [OServer]
+2020-01-22 23:52:51:023 INFO  Creating the system database 'OSystem' for current server [OSystemDatabase]
+2020-01-22 23:52:51:095 INFO  Page size for WAL located in C:\Users\hjk14\orientdb-3.0.27\databases\OSystem is set to 4096 bytes. [OCASDiskWriteAheadLog]Exception `431352DA` in storage `plocal:C:\Users\hjk14\orientdb-3.0.27\databases/OSystem`: 3.0.27 - Veloce (build bc8f77600494cab71fb347d4c29f71c793442464, branch 3.0.x)
+com.orientechnologies.common.exception.ODirectMemoryAllocationFailedException: Can not allocate direct memory chunk of size 67108864
+        at com.orientechnologies.common.directmemory.ODirectMemoryAllocator.allocate(ODirectMemoryAllocator.java:131)
+        at com.orientechnologies.orient.core.storage.impl.local.paginated.wal.cas.OCASDiskWriteAheadLog.<init>(OCASDiskWriteAheadLog.java:316)
+        at com.orientechnologies.orient.core.storage.disk.OLocalPaginatedStorage.initWalAndDiskCache(OLocalPaginatedStorage.java:589)
+        at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.create(OAbstractPaginatedStorage.java:511)
+        at com.orientechnologies.orient.core.storage.disk.OLocalPaginatedStorage.create(OLocalPaginatedStorage.java:155)
+        at com.orientechnologies.orient.core.db.OrientDBEmbedded.internalCreate(OrientDBEmbedded.java:440)
+        at com.orientechnologies.orient.core.db.OrientDBEmbedded.create(OrientDBEmbedded.java:389)
+        at com.orientechnologies.orient.server.OServer.createDatabase(OServer.java:1236)
+        at com.orientechnologies.orient.server.OSystemDatabase.init(OSystemDatabase.java:160)
+        at com.orientechnologies.orient.server.OSystemDatabase.<init>(OSystemDatabase.java:49)
+        at com.orientechnologies.orient.server.OServer.initSystemDatabase(OServer.java:1212)
+        at com.orientechnologies.orient.server.OServer.activate(OServer.java:421)
+        at com.orientechnologies.orient.server.OServerMain$1.run(OServerMain.java:48)
+Exception `431352DA` in storage `plocal:C:\Users\hjk14\orientdb-3.0.27\databases/OSystem`: 3.0.27 - Veloce (build bc8f77600494cab71fb347d4c29f71c793442464, branch 3.0.x)
+com.orientechnologies.common.exception.ODirectMemoryAllocationFailedException: Can not allocate direct memory chunk of size 67108864
+        at com.orientechnologies.common.directmemory.ODirectMemoryAllocator.allocate(ODirectMemoryAllocator.java:131)
+        at com.orientechnologies.orient.core.storage.impl.local.paginated.wal.cas.OCASDiskWriteAheadLog.<init>(OCASDiskWriteAheadLog.java:316)
+        at com.orientechnologies.orient.core.storage.disk.OLocalPaginatedStorage.initWalAndDiskCache(OLocalPaginatedStorage.java:589)
+        at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.create(OAbstractPaginatedStorage.java:511)
+        at com.orientechnologies.orient.core.storage.disk.OLocalPaginatedStorage.create(OLocalPaginatedStorage.java:155)
+        at com.orientechnologies.orient.core.db.OrientDBEmbedded.internalCreate(OrientDBEmbedded.java:440)
+        at com.orientechnologies.orient.core.db.OrientDBEmbedded.create(OrientDBEmbedded.java:389)
+        at com.orientechnologies.orient.server.OServer.createDatabase(OServer.java:1236)
+        at com.orientechnologies.orient.server.OSystemDatabase.init(OSystemDatabase.java:160)
+        at com.orientechnologies.orient.server.OSystemDatabase.<init>(OSystemDatabase.java:49)
+        at com.orientechnologies.orient.server.OServer.initSystemDatabase(OServer.java:1212)
+        at com.orientechnologies.orient.server.OServer.activate(OServer.java:421)
+        at com.orientechnologies.orient.server.OServerMain$1.run(OServerMain.java:48)
+
+        2020-01-22 23:52:51:111 INFO  - shutdown storage: OSystem... [OrientDBEmbedded]Error during server execution
+        java.lang.NullPointerException
+                at com.orientechnologies.orient.core.engine.local.OEngineLocalPaginated.shutdown(OEngineLocalPaginated.java:157)
+                at com.orientechnologies.orient.core.Orient.onEmbeddedFactoryClose(Orient.java:981)
+                at com.orientechnologies.orient.core.db.OrientDBEmbedded.internalClose(OrientDBEmbedded.java:557)
+                at com.orientechnologies.orient.core.db.OrientDBEmbedded.close(OrientDBEmbedded.java:537)
+                at com.orientechnologies.orient.server.OServer.activate(OServer.java:497)
+                at com.orientechnologies.orient.server.OServerMain$1.run(OServerMain.java:48)
