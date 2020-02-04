@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>React-Typescript-setup.html</title>
+</head>
+<body>
+   mkdir React-Typescript
+
+   cd React-Typescript
+
+      React-Typescript/
+      ├─ dist/
+      └─ src/
+         └─ components/
+
+   mkdir src
+   cd src
+   mkdir components
+   cd ..
+
+   npm init -y
+
+   npm install --save-dev webpack webpack-cli
+
+   npm install --save react react-dom
+
+   npm install --save-dev @types/react @types/react-dom
+
+   npm install --save-dev typescript ts-loader source-map-loader
+
+   !  create a tsconfig.json
+      !  input inside tsconfig.json
+
+      {
+         "compilerOptions": {
+             "outDir": "./dist/",
+             "sourceMap": true,
+             "noImplicitAny": true,
+             "module": "commonjs",
+             "target": "es6",
+             "jsx": "react"
+         }
+     }
+
+   !  create a file named Hello.tsx in src/components
+      !  input inside Hello.tsx
+      
+      import * as React from "react";
+
+      export interface HelloProps { compiler: string; framework: string; }
+
+      // 'HelloProps' describes the shape of props.
+      // State is never set so we use the '{}' type.
+      export class Hello extends React.Component<HelloProps, {}> {
+         render() {
+            return <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>;
+         }
+      }
+   
+   !  create an index.tsx in src
+      !  input inside index.tsx
+      
+      import * as React from "react";
+      import * as ReactDOM from "react-dom";
+
+      import { Hello } from "./components/Hello";
+
+      ReactDOM.render(
+         <Hello compiler="TypeScript" framework="React" />,
+         document.getElementById("example")
+      );
+   
+   !  Create a file at the root of React-Typescript named index.html
+      !  input inside index.html
+
+      <!DOCTYPE html>
+      <html>
+         <head>
+            <meta charset="UTF-8" />
+            <title>Hello React!</title>
+         </head>
+         <body>
+            <div id="example"></div>
+
+            <!-- Dependencies -->
+            <script src="./node_modules/react/umd/react.development.js"></script>
+            <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+
+            <!-- Main -->
+            <script src="./dist/main.js"></script>
+         </body>
+      </html>
+
+   !  Create a webpack.config.js file at the root of the project directory.
+      !  input inside webpack.config.js
+
+      module.exports = {
+         mode: "production",
+     
+         // Enable sourcemaps for debugging webpack's output.
+         devtool: "source-map",
+     
+         resolve: {
+             // Add '.ts' and '.tsx' as resolvable extensions.
+             extensions: [".ts", ".tsx"]
+         },
+     
+         module: {
+             rules: [
+                 {
+                     test: /\.ts(x?)$/,
+                     exclude: /node_modules/,
+                     use: [
+                         {
+                             loader: "ts-loader"
+                         }
+                     ]
+                 },
+                 // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+                 {
+                     enforce: "pre",
+                     test: /\.js$/,
+                     loader: "source-map-loader"
+                 }
+             ]
+         },
+     
+         // When importing a module whose path matches one of the following, just
+         // assume a corresponding global variable exists and use that instead.
+         // This is important because it allows us to avoid bundling all of our
+         // dependencies, which allows browsers to cache those libraries between builds.
+         externals: {
+             "react": "React",
+             "react-dom": "ReactDOM"
+         }
+     };
+   
+   !!! Just run!!!
+
+   npx webpack --watch
+
+   (watch is checking your file keep going)
+   
+   
+   
+   
+   
+
+
+
+</body>
+</html>
